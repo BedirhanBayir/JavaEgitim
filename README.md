@@ -14,3 +14,4 @@ Program: [burakkozturk/backend-internship-program-java-springboot](https://githu
 | [Day7](Day7) | Constructors & this |
 | [Day8](Day8) | Encapsulation & Access Modifiers |
 | [Day9](Day9) | Inheritance & super |
+| [Day10](Day10) | Polymorphism & Method Overriding |
