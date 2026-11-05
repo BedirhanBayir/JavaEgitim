@@ -12,3 +12,4 @@ Program: [burakkozturk/backend-internship-program-java-springboot](https://githu
 | [Day5](Day5) | Methods |
 | [Day6](Day6) | Classes & Objects |
 | [Day7](Day7) | Constructors & this |
+| [Day8](Day8) | Encapsulation & Access Modifiers |
