@@ -18,3 +18,4 @@ Program: [burakkozturk/backend-internship-program-java-springboot](https://githu
 | [Day11](Day11) | Abstract Classes vs Interfaces |
 | [Day12](Day12) | Collections: List & ArrayList |
 | [Day13](Day13) | Collections: Set & Map |
+| [Day14](Day14) | Exception Handling & OOP Mini Proje |
