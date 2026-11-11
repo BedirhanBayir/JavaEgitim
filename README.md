@@ -23,3 +23,4 @@ Program: [burakkozturk/backend-internship-program-java-springboot](https://githu
 | [Day16](Day16) | İlk REST API: @RestController & @GetMapping |
 | [Day17](Day17) | @PathVariable & @RequestParam |
 | [Day18](Day18) | POST, PUT, DELETE & @RequestBody |
+| [Day19](Day19) | Katmanlı Mimari: Controller & Service |
