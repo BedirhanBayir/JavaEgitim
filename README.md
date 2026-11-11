@@ -20,3 +20,4 @@ Program: [burakkozturk/backend-internship-program-java-springboot](https://githu
 | [Day13](Day13) | Collections: Set & Map |
 | [Day14](Day14) | Exception Handling & OOP Mini Proje |
 | [Day15](Day15) | Web Temelleri (HTTP, JSON) & İlk Spring Boot Projesi |
+| [Day16](Day16) | İlk REST API: @RestController & @GetMapping |
