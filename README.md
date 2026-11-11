@@ -24,3 +24,4 @@ Program: [burakkozturk/backend-internship-program-java-springboot](https://githu
 | [Day17](Day17) | @PathVariable & @RequestParam |
 | [Day18](Day18) | POST, PUT, DELETE & @RequestBody |
 | [Day19](Day19) | Katmanlı Mimari: Controller & Service |
+| [Day20](Day20) | DTO Pattern |
