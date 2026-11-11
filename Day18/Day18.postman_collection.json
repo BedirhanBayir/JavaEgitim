@@ -1,0 +1,70 @@
+{
+  "info": {
+    "name": "Day18 - Product API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080/api/products" }
+  ],
+  "item": [
+    {
+      "name": "Tüm ürünler",
+      "request": { "method": "GET", "url": "{{baseUrl}}" }
+    },
+    {
+      "name": "ID ile getir (200)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/1" }
+    },
+    {
+      "name": "ID ile getir (404)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/99" }
+    },
+    {
+      "name": "Ürün ekle (201)",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Monitör\",\n  \"price\": 8500.00,\n  \"category\": \"Elektronik\"\n}",
+          "options": { "raw": { "language": "json" } }
+        }
+      }
+    },
+    {
+      "name": "Ürün ekle - eksik isim (400)",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 100,\n  \"category\": \"Elektronik\"\n}",
+          "options": { "raw": { "language": "json" } }
+        }
+      }
+    },
+    {
+      "name": "Ürün güncelle (200)",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/2",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Kablosuz Fare\",\n  \"price\": 450.0,\n  \"category\": \"Elektronik\"\n}",
+          "options": { "raw": { "language": "json" } }
+        }
+      }
+    },
+    {
+      "name": "Ürün sil (204)",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/3" }
+    },
+    {
+      "name": "Ürün sil - olmayan (404)",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/99" }
+    }
+  ]
+}

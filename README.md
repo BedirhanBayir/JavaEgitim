@@ -22,3 +22,4 @@ Program: [burakkozturk/backend-internship-program-java-springboot](https://githu
 | [Day15](Day15) | Web Temelleri (HTTP, JSON) & İlk Spring Boot Projesi |
 | [Day16](Day16) | İlk REST API: @RestController & @GetMapping |
 | [Day17](Day17) | @PathVariable & @RequestParam |
+| [Day18](Day18) | POST, PUT, DELETE & @RequestBody |
