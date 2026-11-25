@@ -1,0 +1,125 @@
+{
+  "info": {
+    "name": "Day23 - Create & Read",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/products"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Create",
+      "item": [
+        {
+          "name": "Geçerli ürün (201)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Monitör\",\n  \"price\": 8500,\n  \"category\": \"Elektronik\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Boş name (400 - Day 18'deki isValid)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"price\": 100,\n  \"category\": \"Test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Fiyat 0 (201)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\",\n  \"price\": 0,\n  \"category\": \"Test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 - Read",
+      "item": [
+        {
+          "name": "Tüm ürünler (200)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}"
+          }
+        },
+        {
+          "name": "Var olan ID (200)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/1"
+          }
+        },
+        {
+          "name": "Olmayan ID (404)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/999"
+          }
+        },
+        {
+          "name": "Kategoriye göre (200)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/category/Elektronik"
+          }
+        },
+        {
+          "name": "Kategoriye göre - küçük harf (boş liste)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/category/elektronik"
+          }
+        }
+      ]
+    }
+  ]
+}
