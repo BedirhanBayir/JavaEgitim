@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "Day24 - Update & Delete",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/products"
+    }
+  ],
+  "item": [
+    {
+      "name": "Update",
+      "item": [
+        {
+          "name": "Var olan ID güncelle (200)",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Gaming Laptop\",\n  \"price\": 32000,\n  \"category\": \"Elektronik\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Olmayan ID güncelle (404)",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/999",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Gaming Laptop\",\n  \"price\": 32000,\n  \"category\": \"Elektronik\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Güncellenen ürünü getir (200)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delete",
+      "item": [
+        {
+          "name": "Var olan ID sil (204)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/2"
+          }
+        },
+        {
+          "name": "Olmayan ID sil (404)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/999"
+          }
+        },
+        {
+          "name": "Silinen ID'yi getir (404)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/2"
+          }
+        },
+        {
+          "name": "Aynı ID'yi tekrar sil (404)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/2"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Toplu silme",
+      "item": [
+        {
+          "name": "Kategoriyi sil (200 - 2 ürün silindi.)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/category/Kırtasiye"
+          }
+        },
+        {
+          "name": "Olmayan kategori (200 - 0 ürün silindi.)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/category/Yok"
+          }
+        },
+        {
+          "name": "Kalan ürünler",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}"
+          }
+        }
+      ]
+    }
+  ]
+}
