@@ -1,0 +1,205 @@
+{
+  "info": {
+    "name": "Day26 - Global Exception Handling",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/products"
+    }
+  ],
+  "item": [
+    {
+      "name": "404 - ResourceNotFoundException",
+      "item": [
+        {
+          "name": "Olmayan ürün (404)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/99"
+          }
+        },
+        {
+          "name": "Olmayan ürünü güncelle (404)",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/99",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\",\n  \"price\": 10,\n  \"category\": \"Test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Olmayan ürünü sil (404)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/99"
+          }
+        },
+        {
+          "name": "Olmayan kullanıcı (404 - aynı handler)",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/users/99"
+          }
+        }
+      ]
+    },
+    {
+      "name": "400",
+      "item": [
+        {
+          "name": "Validasyon hatası (400 - alan map'i)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"price\": -5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Bozuk tip: price 'abc' (400)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\",\n  \"price\": \"abc\",\n  \"category\": \"Test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "id yerine yazı (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/abc"
+          }
+        },
+        {
+          "name": "Eksik @RequestParam (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/search"
+          }
+        }
+      ]
+    },
+    {
+      "name": "500",
+      "item": [
+        {
+          "name": "Çok uzun kategori - 300 karakter (500)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\",\n  \"price\": 10,\n  \"category\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Spring'in kendi hataları",
+      "item": [
+        {
+          "name": "Olmayan adres (404)",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/olmayan"
+          }
+        },
+        {
+          "name": "Yanlış method (405)",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Başarılı istekler",
+      "item": [
+        {
+          "name": "Var olan ürün (200)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/1"
+          }
+        },
+        {
+          "name": "Ürün ekle (201)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Monitör\",\n  \"price\": 8500,\n  \"category\": \"Elektronik\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
