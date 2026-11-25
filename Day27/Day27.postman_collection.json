@@ -1,0 +1,103 @@
+{
+  "info": {
+    "name": "Day27 - MySQL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/products"
+    }
+  ],
+  "item": [
+    {
+      "name": "Kalıcılık testi",
+      "item": [
+        {
+          "name": "1) Tüm ürünler",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}"
+          }
+        },
+        {
+          "name": "2) Ürün ekle (201)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Monitör\",\n  \"price\": 8500,\n  \"category\": \"Elektronik\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "3) Uygulamayı yeniden başlat, sonra tekrar listele - Monitör hâlâ orada",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "CRUD",
+      "item": [
+        {
+          "name": "ID ile getir",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/1"
+          }
+        },
+        {
+          "name": "Güncelle (200)",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Gaming Laptop\",\n  \"price\": 32000,\n  \"category\": \"Elektronik\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Sil (204)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/2"
+          }
+        },
+        {
+          "name": "Olmayan (404)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/999"
+          }
+        }
+      ]
+    }
+  ]
+}
