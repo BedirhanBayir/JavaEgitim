@@ -1,0 +1,213 @@
+{
+  "info": {
+    "name": "Day28 - Category & Product (OneToMany)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/products"
+    }
+  ],
+  "item": [
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Kategori oluştur (201)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/categories",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kitap\",\n  \"description\": \"Roman, ders kitabı\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Boş isimli kategori (400)",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/categories",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"description\": \"Test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Tüm kategoriler (ürünleriyle)",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/categories"
+          }
+        },
+        {
+          "name": "ID ile kategori + ürünleri (200)",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/categories/1"
+          }
+        },
+        {
+          "name": "Olmayan kategori (404)",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/categories/99"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Ürün ekle - categoryId ile (201)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop Pro\",\n  \"price\": 45000,\n  \"categoryId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Yeni kategoriye ürün ekle (201)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Suç ve Ceza\",\n  \"price\": 180,\n  \"categoryId\": 3\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Olmayan categoryId (404)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\",\n  \"price\": 10,\n  \"categoryId\": 99\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "categoryId yok (400)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\",\n  \"price\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Ürünü başka kategoriye taşı (200)",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/2",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Fare\",\n  \"price\": 250,\n  \"categoryId\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Tüm ürünler (categoryName ile)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}"
+          }
+        },
+        {
+          "name": "Kategori adına göre (JOIN'li sorgu)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/category/Elektronik"
+          }
+        }
+      ]
+    }
+  ]
+}

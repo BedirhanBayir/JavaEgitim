@@ -26,3 +26,10 @@ Program: [burakkozturk/backend-internship-program-java-springboot](https://githu
 | [Day19](Day19) | Katmanlı Mimari: Controller & Service |
 | [Day20](Day20) | DTO Pattern |
 | [Day21](Day21) | Spring Data JPA & H2 Veritabanı |
+| [Day22](Day22) | Repository Katmanı & JpaRepository |
+| [Day23](Day23) | Veritabanı İşlemleri I: Create & Read |
+| [Day24](Day24) | Veritabanı İşlemleri II: Update & Delete, @Transactional |
+| [Day25](Day25) | Validasyonlar (@NotBlank, @NotNull, @Min, @Size) |
+| [Day26](Day26) | Global Exception Handling (@ControllerAdvice) |
+| [Day27](Day27) | H2'den MySQL'e Geçiş |
+| [Day28](Day28) | Entity İlişkileri: @OneToMany & @ManyToOne |
